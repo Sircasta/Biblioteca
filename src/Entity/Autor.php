@@ -27,7 +27,7 @@ class Autor
 
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      * @var \DateTime
      */
     private $fechaNacimiento;
@@ -37,4 +37,68 @@ class Autor
      * @var bool
      */
     private $nacional;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNombreApellidos(): string
+    {
+        return $this->nombreApellidos;
+    }
+
+    /**
+     * @param string $nombreApellidos
+     * @return Autor
+     */
+    public function setNombreApellidos(string $nombreApellidos): Autor
+    {
+        $this->nombreApellidos = $nombreApellidos;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaNacimiento(): \DateTime
+    {
+        return $this->fechaNacimiento;
+    }
+
+    /**
+     * @param \DateTime $fechaNacimiento
+     * @return Autor
+     */
+    public function setFechaNacimiento(\DateTime $fechaNacimiento): Autor
+    {
+        $this->fechaNacimiento = $fechaNacimiento;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNacional(): bool
+    {
+        return $this->nacional;
+    }
+
+    /**
+     * @param bool $nacional
+     * @return Autor
+     */
+    public function setNacional(bool $nacional): Autor
+    {
+        $this->nacional = $nacional;
+        return $this;
+    }
+
+
 }
