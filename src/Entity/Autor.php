@@ -27,7 +27,7 @@ class Autor
 
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      * @var \DateTime
      */
     private $fechaNacimiento;
@@ -37,6 +37,12 @@ class Autor
      * @var bool
      */
     private $nacional;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @var string
+     */
+    private $pseudonimo;
 
     /**
      * @return int
@@ -65,9 +71,9 @@ class Autor
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime/null
      */
-    public function getFechaNacimiento(): \DateTime
+    public function getFechaNacimiento(): ?\DateTime
     {
         return $this->fechaNacimiento;
     }
@@ -76,7 +82,7 @@ class Autor
      * @param \DateTime $fechaNacimiento
      * @return Autor
      */
-    public function setFechaNacimiento(\DateTime $fechaNacimiento): Autor
+    public function setFechaNacimiento(\DateTime $fechaNacimiento = null): Autor
     {
         $this->fechaNacimiento = $fechaNacimiento;
         return $this;
@@ -97,6 +103,24 @@ class Autor
     public function setNacional(bool $nacional): Autor
     {
         $this->nacional = $nacional;
+        return $this;
+    }
+
+    /**
+     * @return string/null
+     */
+    public function getPseudonimo(): ?string
+    {
+        return $this->pseudonimo;
+    }
+
+    /**
+     * @param string $pseudonimo
+     * @return Autor
+     */
+    public function setPseudonimo(string $pseudonimo): Autor
+    {
+        $this->pseudonimo = $pseudonimo;
         return $this;
     }
 
