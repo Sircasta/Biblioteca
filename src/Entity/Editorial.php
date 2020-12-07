@@ -37,6 +37,7 @@ class Editorial
      */
     private $direccionPostal;
 
+
     /**
      * @return int
      */

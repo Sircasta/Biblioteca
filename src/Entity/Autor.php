@@ -59,12 +59,20 @@ class Autor
     private $socios;
 
     /**
+     * @ORM\OneToMany(targetEntity="Editorial", mappedBy="autores")
+     * @var Socio[]|Collection
+     */
+    private $editoriales;
+
+
+    /**
      * Autor constructor.
      */
     public function __construct()
     {
         $this->libros = new ArrayCollection();
         $this->socios = new ArrayCollection();
+        $this->editoriales = new ArrayCollection();
     }
 
     /**
@@ -180,6 +188,24 @@ class Autor
     public function setSocios($socios)
     {
         $this->socios = $socios;
+        return $this;
+    }
+
+    /**
+     * @return Socio[]|Collection
+     */
+    public function getEditoriales()
+    {
+        return $this->editoriales;
+    }
+
+    /**
+     * @param Socio[]|Collection $editoriales
+     * @return Autor
+     */
+    public function setEditoriales($editoriales)
+    {
+        $this->editoriales = $editoriales;
         return $this;
     }
 
