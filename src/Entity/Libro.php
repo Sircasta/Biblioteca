@@ -26,10 +26,11 @@ class Libro
     private $titulo;
 
     /**
-     * @ORM\Column(type="string", length=25)
-     * @var string
+     * @var Autor
+     * @ORM\ManyToOne(targetEntity="Autor", inversedBy="libros")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $autor;
+    private $autores;
 
     /**
      * @ORM\Column(type="string", length=25)
@@ -88,20 +89,20 @@ class Libro
     }
 
     /**
-     * @return string
+     * @return Autor
      */
-    public function getAutor(): string
+    public function getAutores(): Autor
     {
-        return $this->autor;
+        return $this->autores;
     }
 
     /**
-     * @param string $autor
+     * @param Autor $autores
      * @return Libro
      */
-    public function setAutor(string $autor): Libro
+    public function setAutores(Autor $autores): Libro
     {
-        $this->autor = $autor;
+        $this->autores = $autores;
         return $this;
     }
 

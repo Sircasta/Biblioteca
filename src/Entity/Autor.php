@@ -3,6 +3,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +44,21 @@ class Autor
      * @var string
      */
     private $pseudonimo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Libro", mappedBy="autores")
+     * @var Libro[]|Collection
+     */
+    private $libros;
+
+    /**
+     * Autor constructor.
+     */
+    public function __construct()
+    {
+        $this->libros = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -121,6 +137,24 @@ class Autor
     public function setPseudonimo(string $pseudonimo = null): Autor
     {
         $this->pseudonimo = $pseudonimo;
+        return $this;
+    }
+
+    /**
+     * @return Collection|Libro[]
+     */
+    public function getLibros()
+    {
+        return $this->libros;
+    }
+
+    /**
+     * @param Collection|Libro[] $libros
+     * @return Autor
+     */
+    public function setLibros($libros)
+    {
+        $this->libros = $libros;
         return $this;
     }
 
