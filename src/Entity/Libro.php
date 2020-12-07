@@ -160,9 +160,9 @@ class Libro
     }
 
     /**
-     * @return int
+     * @return int/null
      */
-    public function getNumeroPaginas(): int
+    public function getNumeroPaginas(): ?int
     {
         return $this->numeroPaginas;
     }

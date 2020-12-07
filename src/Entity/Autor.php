@@ -118,7 +118,7 @@ class Autor
      * @param string $pseudonimo
      * @return Autor
      */
-    public function setPseudonimo(string $pseudonimo): Autor
+    public function setPseudonimo(string $pseudonimo = null): Autor
     {
         $this->pseudonimo = $pseudonimo;
         return $this;

@@ -94,9 +94,9 @@ class Socio
     }
 
     /**
-     * @return string
+     * @return string/null
      */
-    public function getDni(): string
+    public function getDni(): ?string
     {
         return $this->dni;
     }
