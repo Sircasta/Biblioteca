@@ -4,11 +4,12 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
- * @ORM\Table()
+ * @ORM\Table(name="autores")
  */
 class Autor
 {
@@ -52,13 +53,19 @@ class Autor
     private $libros;
 
     /**
+     * @ORM\OneToMany(targetEntity="Socio", mappedBy="autores")
+     * @var Socio[]|Collection
+     */
+    private $socios;
+
+    /**
      * Autor constructor.
      */
     public function __construct()
     {
         $this->libros = new ArrayCollection();
+        $this->socios = new ArrayCollection();
     }
-
 
     /**
      * @return int
@@ -155,6 +162,24 @@ class Autor
     public function setLibros($libros)
     {
         $this->libros = $libros;
+        return $this;
+    }
+
+    /**
+     * @return Socio[]|Collection
+     */
+    public function getSocios()
+    {
+        return $this->socios;
+    }
+
+    /**
+     * @param Socio[]|Collection $socios
+     * @return Autor
+     */
+    public function setSocios($socios)
+    {
+        $this->socios = $socios;
         return $this;
     }
 
