@@ -35,10 +35,11 @@ class Libro
     private $autores;
 
     /**
-     * @ORM\OneToMany(targetEntity="Editorial", mappedBy="libro")
-     * @var Editorial[]|Collection
+     * @ORM\ManyToOne (targetEntity="Editorial", inversedBy="libros")
+     * @ORM\JoinColumn (nullable=false)
+     * @var Editorial
      */
-    private $editoriales;
+    private $editorial;
 
     /**
      * @ORM\Column(type="integer")

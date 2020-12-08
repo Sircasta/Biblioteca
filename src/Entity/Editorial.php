@@ -3,7 +3,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use mysql_xdevapi\Collection;
 
 /**
  * @ORM\Entity
@@ -38,11 +40,19 @@ class Editorial
     private $direccionPostal;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Libro", inversedBy="libro")
-     * @ORM\JoinColumn(nullable=false)
-     * @var Libro
+     * @ORM\OneToMany (targetEntity="Libro", mappedBy="editorial")
+     * @var Libro[]|Collection
      */
-    private $libro;
+    private $libros;
+
+    /**
+     * Editorial constructor.
+     */
+    public function __construct()
+    {
+        $this->libros = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -107,22 +117,24 @@ class Editorial
     }
 
     /**
-     * @return Libro
+     * @return Libro[]|Collection
      */
-    public function getLibro(): Libro
+    public function getLibros()
     {
-        return $this->libro;
+        return $this->libros;
     }
 
     /**
-     * @param Libro $libro
+     * @param Libro[]|Collection $libros
      * @return Editorial
      */
-    public function setLibro(Libro $libro): Editorial
+    public function setLibros($libros)
     {
-        $this->libro = $libro;
+        $this->libros = $libros;
         return $this;
     }
+
+
 
 
 }
