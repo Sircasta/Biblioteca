@@ -26,9 +26,9 @@ class Libro
     private $titulo;
 
     /**
-     * @var Autor
-     * @ORM\ManyToOne(targetEntity="Autor", inversedBy="libro")
+     * @ORM\ManyToOne(targetEntity="Autor", inversedBy="libros")
      * @ORM\JoinColumn(nullable=false)
+     * @var Autor
      */
     private $autores;
 
