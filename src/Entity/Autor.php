@@ -53,7 +53,7 @@ class Autor
     private $libros;
 
     /**
-     * @ORM\OneToMany(targetEntity="Socio", mappedBy="autores")
+     * @ORM\ManyToMany(targetEntity="Socio", mappedBy="autores")
      * @var Socio[]|Collection
      */
     private $socios;

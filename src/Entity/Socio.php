@@ -52,6 +52,20 @@ class Socio
     private $docente;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Autor", mappedBy="socios")
+     * @var Autor[]|Collection
+     */
+    private $autores;
+
+    /**
+     * Socio constructor.
+     */
+    public function __construct()
+    {
+        $this->autores = new ArrayCollection();
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -146,6 +160,24 @@ class Socio
     public function setDocente(bool $docente): Socio
     {
         $this->docente = $docente;
+        return $this;
+    }
+
+    /**
+     * @return Autor[]|Collection
+     */
+    public function getAutores()
+    {
+        return $this->autores;
+    }
+
+    /**
+     * @param Autor[]|Collection $autores
+     * @return Socio
+     */
+    public function setAutores($autores)
+    {
+        $this->autores = $autores;
         return $this;
     }
 
