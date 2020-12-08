@@ -37,6 +37,12 @@ class Editorial
      */
     private $direccionPostal;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Libro", inversedBy="libro")
+     * @ORM\JoinColumn(nullable=false)
+     * @var Libro
+     */
+    private $libro;
 
     /**
      * @return int
@@ -97,6 +103,24 @@ class Editorial
     public function setDireccionPostal(direccionPostal $direccionPostal = null): Editorial
     {
         $this->direccionPostal = $direccionPostal;
+        return $this;
+    }
+
+    /**
+     * @return Libro
+     */
+    public function getLibro(): Libro
+    {
+        return $this->libro;
+    }
+
+    /**
+     * @param Libro $libro
+     * @return Editorial
+     */
+    public function setLibro(Libro $libro): Editorial
+    {
+        $this->libro = $libro;
         return $this;
     }
 

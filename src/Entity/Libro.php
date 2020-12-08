@@ -3,7 +3,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use mysql_xdevapi\Collection;
 
 /**
  * @ORM\Entity()
@@ -33,10 +35,10 @@ class Libro
     private $autores;
 
     /**
-     * @ORM\Column(type="string", length=25)
-     * @var string
+     * @ORM\OneToMany(targetEntity="Editorial", mappedBy="libro")
+     * @var Editorial[]|Collection
      */
-    private $editorial;
+    private $editoriales;
 
     /**
      * @ORM\Column(type="integer")
@@ -63,10 +65,12 @@ class Libro
     private $sinopsis;
 
     /**
-     * @ORM\OneToMany(targetEntity="Libro", mappedBy="editorial")
+     * Libro constructor.
      */
-    private $iditorial;
-
+    public function __construct()
+    {
+        $this->editoriales = new ArrayCollection();
+    }
 
     /**
      * @return int
