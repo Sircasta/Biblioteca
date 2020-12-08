@@ -27,7 +27,7 @@ class Libro
 
     /**
      * @var Autor
-     * @ORM\ManyToOne(targetEntity="Autor", inversedBy="libros")
+     * @ORM\ManyToOne(targetEntity="Autor", inversedBy="libro")
      * @ORM\JoinColumn(nullable=false)
      */
     private $autores;
@@ -61,6 +61,12 @@ class Libro
      * @var string
      */
     private $sinopsis;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Libro", mappedBy="editorial")
+     */
+    private $iditorial;
+
 
     /**
      * @return int
