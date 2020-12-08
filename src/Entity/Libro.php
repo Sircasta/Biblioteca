@@ -65,6 +65,13 @@ class Libro
     private $sinopsis;
 
     /**
+     * @ORM\ManyToOne (targetEntity="Socio", inversedBy="libros")
+     * @ORM\JoinColumn (nullable=false)
+     * @var Socio
+     */
+    private $socio;
+
+    /**
      * Libro constructor.
      */
     public function __construct()
@@ -205,6 +212,26 @@ class Libro
         $this->sinopsis = $sinopsis;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSocio()
+    {
+        return $this->socio;
+    }
+
+    /**
+     * @param mixed $socio
+     * @return Libro
+     */
+    public function setSocio($socio)
+    {
+        $this->socio = $socio;
+        return $this;
+    }
+
+
 
 
 }

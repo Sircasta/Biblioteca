@@ -52,11 +52,6 @@ class Autor
      */
     private $libros;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Socio", mappedBy="autores")
-     * @var Socio[]|Collection
-     */
-    private $socios;
 
     /**
      * Autor constructor.
@@ -64,7 +59,6 @@ class Autor
     public function __construct()
     {
         $this->libros = new ArrayCollection();
-        $this->socios = new ArrayCollection();
     }
 
     /**
@@ -162,24 +156,6 @@ class Autor
     public function setLibros($libros)
     {
         $this->libros = $libros;
-        return $this;
-    }
-
-    /**
-     * @return Socio[]|Collection
-     */
-    public function getSocios()
-    {
-        return $this->socios;
-    }
-
-    /**
-     * @param Socio[]|Collection $socios
-     * @return Autor
-     */
-    public function setSocios($socios)
-    {
-        $this->socios = $socios;
         return $this;
     }
 

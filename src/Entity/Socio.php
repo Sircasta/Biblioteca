@@ -52,18 +52,19 @@ class Socio
     private $docente;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Autor", mappedBy="socios")
-     * @var Autor[]|Collection
+     * @ORM\OneToMany (targetEntity="Libro", mappedBy="socio")
+     * @var Libro[]|Collection
      */
-    private $autores;
+    private $libros;
 
     /**
      * Socio constructor.
      */
     public function __construct()
     {
-        $this->autores = new ArrayCollection();
+        $this->libros = new ArrayCollection();
     }
+
 
     /**
      * @return int
@@ -164,22 +165,26 @@ class Socio
     }
 
     /**
-     * @return Autor[]|Collection
+     * @return ArrayCollection
      */
-    public function getAutores()
+    public function getLibros(): ArrayCollection
     {
-        return $this->autores;
+        return $this->libros;
     }
 
     /**
-     * @param Autor[]|Collection $autores
+     * @param ArrayCollection $libros
      * @return Socio
      */
-    public function setAutores($autores)
+    public function setLibros(ArrayCollection $libros): Socio
     {
-        $this->autores = $autores;
+        $this->libros = $libros;
         return $this;
     }
+
+
+
+
 
 
 }
